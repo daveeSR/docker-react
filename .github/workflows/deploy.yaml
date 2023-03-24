@@ -1,48 +1,8 @@
-# name: Deploy docker-react
-# on:
-#   push:
-#     branches:
-#       - master # check your repo, your default branch might be master!
- 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-#       - run: docker build -t react-test -f ./Dockerfile.dev .
-#       - run: docker run -e CI=true react-test npm test
- 
-#       - run: docker build -t multi-client-10-14 .
-#       - run: docker build -t multi-nginx-10-14 .
-#       - run: docker build -t multi-server-10-14 .
-#       - run: docker build -t multi-worker-10-14 .
- 
-#       - run: docker push multi-client-10-14
-#       - run: docker push multi-nginx-10-14
-#       - run: docker push multi-server-10-14
-#       - run: docker push multi-worker-10-14
- 
-#       - name: Generate deployment package
-#         run: zip -r deploy.zip . -x '*.git*'
- 
-#       - name: Deploy to EB
-#         uses: einaregilsson/beanstalk-deploy@v18
-#         with:
-#           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-#           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-#           application_name: docker-react
-#           environment_name: Docker-react-env
-#           existing_bucket_name: elasticbeanstalk-eu-west-1-435351843618
-#           region: eu-west-1
-#           version_label: ${{ github.sha }}
-#           deployment_package: deploy.zip
-
 name: Deploy Frontend
 on:
   push:
     branches:
-      - main # check your repo, your default branch might be master!
+      - master # check your repo, your default branch might be master!
  
 jobs:
   build:
